@@ -1,3 +1,11 @@
+# The final, successful Grafana UI.
+
+![image alt](https://github.com/tanmoyindu/Local-Kubernetes-Observability-Stack-with-Grafana-Loki/blob/4408db8ea4f986d30675c123295fd50bfd69c14c/grafana-success-ui%201.png)
+
+
+
+
+
 # Local-Kubernetes-Observability-Stack-with-Grafana-Loki
   This repository documents the setup and troubleshooting process for deploying a logging stack on a local Kubernetes (kind) cluster. The goal is to aggregate logs using Loki and visualize them in Grafana.
   
