@@ -2,6 +2,8 @@
 
 ![image alt](https://github.com/tanmoyindu/Local-Kubernetes-Observability-Stack-with-Grafana-Loki/blob/4408db8ea4f986d30675c123295fd50bfd69c14c/grafana-success-ui%201.png)
 
+![image alt](https://github.com/tanmoyindu/Local-Kubernetes-Observability-Stack-with-Grafana-Loki/blob/e41800c4cb2a11272b49c4b48dccd57b7b2505a0/grafana-success-ui2.png)
+
 
 
 
