@@ -5,8 +5,11 @@
 
 # Final Architecture
 Kubernetes Cluster: kind (Kubernetes in Docker)
+
 Log Aggregation: Loki, deployed via Helm in SingleBinary mode, using the embedded Minio chart for S3-compatible local storage.
+
 Visualization: Grafana, deployed via Helm and automatically provisioned with the Loki data source.
+
 Namespace: All components are deployed in the monitoring namespace.
 
 # Final Working Configuration Files
@@ -30,18 +33,25 @@ Lesson Learned: For complex charts, relying on many --set flags can be unreliabl
 
 # Problem 2: Resource Exhaustion and Cluster Instability
 After successfully deploying the components, the entire kind cluster became unstable.
+
 Symptom: kubectl commands started failing with TLS handshake timeout errors. docker commands returned 500 Internal Server Error, indicating the Docker Desktop engine itself had crashed under the load.
+
 Lesson Learned: A full observability stack is resource-intensive. A default kind cluster does not have enough Memory or CPU to run it stably. Increasing the resources allocated by Docker Desktop (e.g., to 8GB+ Memory, 4+ CPUs) is a mandatory step for running this kind of workload locally.
 
 # Problem 3: Multi-Tenancy ("no org id" Error)
 When I did manage to get the scalable Loki running, Grafana could not communicate with it.
+
 Symptom: Grafana logs showed error="error from loki: no org id". A direct curl test from within the cluster confirmed Loki was rejecting requests due to a missing X-Scope-OrgID header.
+
 Lesson Learned: The default scalable Loki deployment enables multi-tenancy. For a local setup, this adds unnecessary complexity. This led me to prefer the SingleBinary mode where auth_enabled: false could be set easily.
 
 # Problem 4: Silent Network Failures
 At one point, all pods were healthy, but Grafana could not receive data from Loki.
+
 Symptom: A perpetually empty "Label browser" in Grafana.
+
 Debugging Technique: I used kubectl exec to get a shell inside the Loki Gateway and watched the Nginx access logs with tail -f. The complete absence of traffic proved a silent network failure within the kind cluster.
+
 Lesson Learned: When a system looks healthy but data isn't flowing, the final diagnostic step is to check the network traffic directly. A silent network drop in a local cluster like kind is a rare but serious issue, and the only reliable solution is to delete and recreate the cluster.
 
 # Phase 3: The Final, Successful Deployment
