@@ -22,13 +22,14 @@ This project was a deep dive into Kubernetes observability, filled with valuable
 # Phase 1: Initial Goal & Setup
 The initial objective was to deploy Grafana and Loki on a kind cluster to create a centralized logging system. I started with the standard approach of using the official Helm charts.
 
-#Phase 2: The Troubleshooting - Problems Faced & Lessons Learned
+# Phase 2: The Troubleshooting - Problems Faced & Lessons Learned
 Deploying the stack proved to be a significant challenge, revealing issues with tooling, resource management, and complex application configurations.
 
 # Problem 1: Helm Chart Complexity and Silent Failures
 My initial attempts to deploy Loki using command-line --set flags were repeatedly ignored by the Helm chart. This led to incorrect deployments in "scalable" mode, which is unsuitable for a local kind cluster.
 
 Symptom: The loki-chunks-cache-0 pod was stuck in a Pending state, waiting for storage that kind could not provide.
+
 Lesson Learned: For complex charts, relying on many --set flags can be unreliable. Providing a dedicated configuration file (-f values.yaml) is a much more robust and predictable method.
 
 # Problem 2: Resource Exhaustion and Cluster Instability
