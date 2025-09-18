@@ -1,0 +1,13 @@
+
+datasources: 
+ datasources.yaml:
+   apiVersion: 1
+   datasources:
+   - name: loki
+     type: loki
+     url: http://loki-gateway.monitoring.svc.cluster.local:80
+     access: proxy
+     isDefault: true
+   
+   
+
