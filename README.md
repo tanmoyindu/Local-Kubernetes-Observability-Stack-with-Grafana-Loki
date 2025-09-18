@@ -1,5 +1,6 @@
 # Local-Kubernetes-Observability-Stack-with-Grafana-Loki
   This repository documents the setup and troubleshooting process for deploying a logging stack on a local Kubernetes (kind) cluster. The goal is to aggregate logs using Loki and visualize them in Grafana.
+  
   This document serves as a guide and a record of the real-world challenges encountered and the solutions that led to a stable deployment.
 
 # Final Architecture
@@ -56,6 +57,7 @@ Step 3: Deploy the Stack with Helm
 
 # Add the necessary repository
 helm repo add grafana https://grafana.github.io/helm-charts
+
 helm repo update
 
 # 1. Install Loki
