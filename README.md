@@ -1,6 +1,6 @@
 # Local-Kubernetes-Observability-Stack-with-Grafana-Loki
-# This repository documents the setup and troubleshooting process for deploying a logging stack on a local Kubernetes (kind) cluster. The goal is to aggregate logs using Loki and visualize them in Grafana.
-# This document serves as a guide and a record of the real-world challenges encountered and the solutions that led to a stable deployment.
+  This repository documents the setup and troubleshooting process for deploying a logging stack on a local Kubernetes (kind) cluster. The goal is to aggregate logs using Loki and visualize them in Grafana.
+  This document serves as a guide and a record of the real-world challenges encountered and the solutions that led to a stable deployment.
 
 # Final Architecture
 Kubernetes Cluster: kind (Kubernetes in Docker)
